@@ -1,8 +1,9 @@
+import 'package:e_commerce/widget/BigCard.dart';
 import 'package:e_commerce/widget/ProductCard.dart';
 import 'package:e_commerce/widget/SectionHeader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'widget/TopSeller.dart';
+import 'widget/TopService.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,13 +26,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // App Bar
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60.0),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: () {},
             ),
             title: const Center(
@@ -57,7 +59,6 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 16.0),
-
             // Search bar dan kotak persegi di bawah navbar
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -169,6 +170,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
+            //Top Seller
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Column(
@@ -196,93 +198,128 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+
             // Top Services
             SectionHeader("Top Services"),
 
-            // Services List
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 6,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Row(
+            TopService(
+              'assets/images/image1.jpg',
+              'assets/images/luffy-profile.png',
+              4.5,
+            ),
+            TopService(
+              'assets/images/image3.jpg',
+              'assets/images/luffy-profile.png',
+              4.8,
+            ),
+            TopService(
+              'assets/images/image2.jpg',
+              'assets/images/luffy-profile.png',
+              4.7,
+            ),
+
+            SectionHeader("Best Bookings"),
+            SizedBox(height: 12),
+
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              height: 250, 
+              width: 370,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: Offset(2, 4),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  // Bagian kiri dengan teks
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            "assets/images/luffy.png",
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
+                        const Text(
+                          'Deal of The Day',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Service ${index + 1}",
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Text(
-                                  "Category",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                const Text(
-                                  "Brief description of the service offered.",
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const Row(
-                                  children: [
-                                    Icon(Icons.star,
-                                        color: Colors.amber, size: 16),
-                                    Text("4.9"),
-                                  ],
-                                ),
-                              ],
-                            ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          'Flat 60% OFF',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text("Book Now"),
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.indigo,
-                              backgroundColor: Colors.indigo.shade100,
+                        const SizedBox(height: 8),
+                        const Text(
+                          'Temukan produk terbaik dengan penawaran menarik. Potongan 50% hanya untuk anda sekarang.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          '16:34:12',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(
+                            height: 16), // Jarak antara teks dan tombol
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 32),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
                             ),
+                          ),
+                          child: const Text(
+                            'Shop Now',
+                            style: TextStyle(fontSize: 14, color: Colors.white),
                           ),
                         ),
                       ],
                     ),
                   ),
-                );
-              },
+
+                  SizedBox(
+                    width: 150, // Lebar gambar
+                    height: 150, // Tinggi gambar
+                    child: Image.asset(
+                      'assets/images/luffy.png', // Ganti dengan path gambar PNG kamu
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ],
+              ),
             ),
 
+            SizedBox(height: 16),
+            BigCard(imagePath: 'assets/images/image1.jpg',),
+            SizedBox(height: 16),
+            BigCard(imagePath: 'assets/images/image3.jpg',),
+            SizedBox(height: 16),
+            BigCard(imagePath: 'assets/images/image2.jpg',),
+
+            // Services List
+            const SizedBox(height: 16),
             SectionHeader("Produk Terbaru"),
             const SizedBox(height: 12),
 
@@ -299,7 +336,7 @@ class HomePage extends StatelessWidget {
                 childAspectRatio: 0.75, // Rasio tinggi dan lebar card
                 children: [
                   ProductCard(
-                    imagePath: 'assets/images/luffy.png',
+                    imagePath: 'assets/images/image1.jpg',
                     productName: 'Produk 1',
                     productPrice: 'Rp 150.000',
                   ),
@@ -310,16 +347,16 @@ class HomePage extends StatelessWidget {
                   ),
                   ProductCard(
                     imagePath: 'assets/images/luffy.png',
-                    productName: 'Produk 3',
-                    productPrice: 'Rp 180.000',
-                  ),
-                  ProductCard(
-                    imagePath: 'assets/images/luffy.png',
                     productName: 'Produk 4',
                     productPrice: 'Rp 200.000',
                   ),
                   ProductCard(
-                    imagePath: 'assets/images/luffy.png',
+                    imagePath: 'assets/images/image3.jpg',
+                    productName: 'Produk 3',
+                    productPrice: 'Rp 180.000',
+                  ),
+                  ProductCard(
+                    imagePath: 'assets/images/image2.jpg',
                     productName: 'Produk 4',
                     productPrice: 'Rp 200.000',
                   ),

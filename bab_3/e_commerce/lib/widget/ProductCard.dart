@@ -15,6 +15,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -24,7 +25,8 @@ class ProductCard extends StatelessWidget {
         children: [
           // Gambar produk
           ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
+            borderRadius:
+                const BorderRadius.vertical(top: Radius.circular(8.0)),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -40,35 +42,35 @@ class ProductCard extends StatelessWidget {
                 // Nama Produk
                 Text(
                   productName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 // Harga Produk
                 Text(
                   productPrice,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.green,
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 // Tombol beli
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text(
-                    'Buy Now',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text(
+                    'Buy Now',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
                     ),
                   ),
                 ),
