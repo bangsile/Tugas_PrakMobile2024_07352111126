@@ -41,6 +41,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     });
   }
 
+  void deleteProduct(int index) {
+    setState(() {
+      _product.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +70,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     count: _product[index]['count'],
                     onMin: () => updateProductCount(index, -1), // Tombol -
                     onPlus: () => updateProductCount(index, 1), // Tombol +
+                    onDelete: () => deleteProduct(index)
                   );
                 },
               ),

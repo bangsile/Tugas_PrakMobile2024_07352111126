@@ -9,6 +9,7 @@ class ChartItem extends StatelessWidget {
   final int count;
   final VoidCallback onMin;
   final VoidCallback onPlus;
+  final VoidCallback onDelete;
 
   ChartItem({
     required this.imagePath,
@@ -18,6 +19,7 @@ class ChartItem extends StatelessWidget {
     required this.count,
     required this.onMin,
     required this.onPlus,
+    required this.onDelete,
   });
 
   @override
@@ -75,7 +77,7 @@ class ChartItem extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.delete),
                       color: Colors.red,
-                      onPressed: () => {},
+                      onPressed: onDelete,
                     ),
                     Row(
                       children: [
